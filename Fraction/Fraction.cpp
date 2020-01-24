@@ -209,14 +209,21 @@ bool operator>=(const int lhs, const Fraction rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Returns a new fraction which is the sum of this one and the provided one.
+*
+*	@param rhs fraction to be added to this one.
+*	@return the sum of this fraction and the provided one as a new Fraction
 */
 Fraction Fraction::operator+(const Fraction& rhs) const {
 	return Fraction(numerator * rhs.denominator + rhs.numerator * denominator, denominator * rhs.denominator);
 }
 
 /**
-*	Returns greatest common divisor
+*	Returns a new fraction which is the sum of two provided values.
+*
+*	@param lhs first fraction to be added to the second
+*	@param rhs second fraction to be added to the first
+*	@return the sum of the provided values as a new Fraction
 */
 Fraction operator+(const Fraction lhs, const int rhs) {
 	int num = lhs.numerator + lhs.denominator * rhs;
@@ -225,7 +232,11 @@ Fraction operator+(const Fraction lhs, const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Returns a new fraction which is the sum of two provided values.
+*
+*	@param lhs first fraction to be added to the second
+*	@param rhs second fraction to be added to the first
+*	@return the sum of the provided values as a new Fraction
 */
 Fraction operator+(const int lhs, const Fraction rhs) {
 	int num = lhs * rhs.denominator + rhs.numerator;
@@ -234,7 +245,9 @@ Fraction operator+(const int lhs, const Fraction rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces this fraction with a new fraction which is the sum of this one and the provided fraction.
+*
+*	@param rhs fraction to be added to this one
 */
 void Fraction::operator+=(const Fraction& rhs) {
 	*this = *this + rhs;
@@ -242,7 +255,10 @@ void Fraction::operator+=(const Fraction& rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces provided fraction with a new one which is the sum of the provided fraction and the provided integer value (interpreted as a fraction).
+*
+*	@param lhs fraction to be added to
+*	@param rhs integer to be added (as a fraction) to lhs fraction
 */
 void operator+=(Fraction &lhs, const int rhs) {
 	lhs = lhs + rhs;
@@ -250,14 +266,21 @@ void operator+=(Fraction &lhs, const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Returns a new fraction which is the difference between this one and the provided one.
+*
+*	@param rhs fraction to be subtracted from this one.
+*	@return the difference between this fraction and the provided one as a new Fraction
 */
 Fraction Fraction::operator-(const Fraction& rhs) const {
 	return Fraction(numerator * rhs.denominator - rhs.numerator * denominator, denominator * rhs.denominator);
 }
 
 /**
-*	Returns greatest common divisor
+*	Returns a new fraction which is the differencebetween two provided values.
+*
+*	@param lhs first fraction to be subtracted from
+*	@param rhs second fraction to be subtracted from the first
+*	@return the difference between the provided values as a new Fraction
 */
 Fraction operator-(const Fraction lhs, const int rhs) {
 	int num = lhs.numerator - lhs.denominator * rhs;
@@ -266,7 +289,11 @@ Fraction operator-(const Fraction lhs, const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Returns a new fraction which is the difference between the two provided values.
+*
+*	@param lhs integer representing the first fraction to be subtracted from
+*	@param rhs second fraction to be subtracted from the first
+*	@return the difference between the provided values as a new Fraction
 */
 Fraction operator-(const int lhs, const Fraction rhs) {
 	int num = lhs * rhs.denominator - rhs.numerator;
@@ -275,7 +302,9 @@ Fraction operator-(const int lhs, const Fraction rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces this fraction with a new fraction which is the difference this one and the provided fraction.
+*
+*	@param rhs fraction to be subtracted from this one
 */
 void Fraction::operator-=(const Fraction& rhs) {
 	*this = *this - rhs;
@@ -284,7 +313,10 @@ void Fraction::operator-=(const Fraction& rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces provided fraction with a new one which is the difference between the provided fraction and the provided integer value (interpreted as a fraction).
+*
+*	@param lhs fraction to be subtracted from
+*	@param rhs integer (interpreted as a fraction) to be subtracted from lhs fraction
 */
 void operator-=(Fraction& lhs, const int rhs) {
 	lhs = lhs - rhs;
@@ -293,7 +325,10 @@ void operator-=(Fraction& lhs, const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Multiplies this fraction by the provided fraction and returns result as a new Fraction.
+*
+*	@param rhs fraction to be multiplied by this one
+*	@return a new fraction which is the product of this fraction and the one provided
 */
 Fraction Fraction::operator*(const Fraction& rhs) const {
 	int num = numerator * rhs.numerator;
@@ -302,7 +337,11 @@ Fraction Fraction::operator*(const Fraction& rhs) const {
 }
 
 /**
-*	Returns greatest common divisor
+*	Multiplies first provided fraction by the provided int (interpreted as a fraction) and returns result as a new Fraction.
+*
+*	@param lhs first fraction to be multiplied
+*	@param rhs integer (interpreted as a fraction) to be multiplied by the first fraction
+*	@return a new fraction which is the product of the two provided values
 */
 Fraction operator*(const Fraction lhs, const int rhs) {
 	int num = lhs.numerator * rhs;
@@ -311,7 +350,11 @@ Fraction operator*(const Fraction lhs, const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Multiplies first provided int (interpreted as a fraction) by the provided fraction and returns result as a new Fraction.
+*
+*	@param lhs first integer (interpreted as a fraction) to be multiplied
+*	@param rhs fraction to be multiplied by the first value
+*	@return a new fraction which is the product of the two provided values
 */
 Fraction operator*(const int lhs, const Fraction rhs) {
 	int num = lhs * rhs.numerator;
@@ -320,7 +363,9 @@ Fraction operator*(const int lhs, const Fraction rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces this fraction with a new fraction which is the sum of this one and the provided one.
+*
+*	@param rhs fraction to be multiplied by this one
 */
 void Fraction::operator*=(const Fraction& rhs) {
 	*this = *this * rhs;
@@ -328,7 +373,9 @@ void Fraction::operator*=(const Fraction& rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces this fraction with a new fraction which is the sum of this one and the provided int (interpreted as a fraction).
+*
+*	@param rhs int (interpreted as a fraction) to be multiplied by this one
 */
 void Fraction::operator*=(const int rhs) {
 	*this = *this * rhs;
@@ -336,7 +383,10 @@ void Fraction::operator*=(const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Divides this fraction by the provided fraction and returns result as a new Fraction.
+*
+*	@param rhs fraction to be divided into this one
+*	@return a new fraction which is this fraction divided by the one provided
 */
 Fraction Fraction::operator/(const Fraction& rhs) const {
 	int num = numerator * rhs.denominator;
@@ -345,7 +395,11 @@ Fraction Fraction::operator/(const Fraction& rhs) const {
 }
 
 /**
-*	Returns greatest common divisor
+*	Divides first provided fraction by the provided int (interpreted as a fraction) and returns result as a new Fraction.
+*
+*	@param lhs first fraction to be divided into
+*	@param rhs integer (interpreted as a fraction) to be divided into the first fraction
+*	@return a new fraction which is the result of dividing the two provided values
 */
 Fraction operator/(const Fraction lhs, const int rhs) {
 	int num = lhs.numerator;
@@ -354,7 +408,11 @@ Fraction operator/(const Fraction lhs, const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Divides first provided int (interpreted as a fraction) by the provided fraction and returns result as a new Fraction.
+*
+*	@param lhs first integer (interpreted as a fraction) to be divided into
+*	@param rhs fraction to be divided into the first value
+*	@return a new fraction which is the result of dividing the two provided values
 */
 Fraction operator/(const int lhs, const Fraction rhs) {
 	int num = lhs * rhs.denominator;
@@ -363,7 +421,9 @@ Fraction operator/(const int lhs, const Fraction rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces this fraction with a new fraction which is this one divided by the provided one.
+*
+*	@param rhs fraction to be divided into this one
 */
 void Fraction::operator/=(const Fraction& rhs) {
 	*this = *this / rhs;
@@ -371,7 +431,9 @@ void Fraction::operator/=(const Fraction& rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Replaces this fraction with a new fraction which is one divided by the provided int (interpreted as a fraction).
+*
+*	@param rhs int (interpreted as a fraction) to be divided into this one
 */
 void Fraction::operator/=(const int rhs) {
 	*this = *this / rhs;
@@ -379,7 +441,11 @@ void Fraction::operator/=(const int rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Overrides the stream insertion operator by inserting a string representation of the fraction and returning the stream.
+*
+*	@param os outputstream that the fraction string is written to
+*	@param rhs fraction whos string representation is inserted into the outputstream
+*	@return the provided outputstream after inserting into it
 */
 std::ostream& operator <<(std::ostream& os, const Fraction& rhs) {
 	os << rhs.numerator << "/" << rhs.denominator;
@@ -387,7 +453,11 @@ std::ostream& operator <<(std::ostream& os, const Fraction& rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Overrides the stream extraction operator by extracting a string representation of the fraction from it, assigning these values to a fraction and returning the stream.
+*
+*	@param is inputstream that the fraction string is extracted from
+*	@param rhs fraction whos values are set from the contents of the provided fraction
+*	@return the provided inputstream after extracting from it
 */
 std::istream& operator >>(std::istream& is, Fraction& rhs) {
 	char L;
@@ -397,7 +467,10 @@ std::istream& operator >>(std::istream& is, Fraction& rhs) {
 }
 
 /**
-*	Returns greatest common divisor
+*	Puts this fraction into its simplest form.
+*	uses euclidean algorithm to find largst common divisor (gcd) of the numerator and denominator of this fraction.
+*	Divides numerator and denominator by the gcd to put this fraction into its simplest form.
+*	Makes sure the -ve character is attached to the numerator (not the denominator) in negative fractions.
 */
 void Fraction::reduce() {
 	// Reduced Form
@@ -412,7 +485,11 @@ void Fraction::reduce() {
 }
 
 /**
-*	Returns greatest common divisor
+*	Finds the greatest common divisor of thw provided numbers using the Euclidean algorithm.
+*
+*	@param num numerator of a fraction
+*	@param den denominator of a fraction
+*	@return the greatest common divisor of the two provided numbers
 */
 int Fraction::euclid(int num, int den) {
 	if (den == 0)
